@@ -44,8 +44,26 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.timerClcok = new System.Windows.Forms.Timer(this.components);
             this.timerAlert = new System.Windows.Forms.Timer(this.components);
+            this.timerStopWatch = new System.Windows.Forms.Timer(this.components);
+            this.txtStopWatch = new System.Windows.Forms.TextBox();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.btnPause = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.btnLog = new System.Windows.Forms.Button();
+            this.listStopWatchLog = new System.Windows.Forms.ListBox();
+            this.txtCountDown = new System.Windows.Forms.TextBox();
+            this.cmbCountHour = new System.Windows.Forms.ComboBox();
+            this.cmbCountSecond = new System.Windows.Forms.ComboBox();
+            this.cmbCountMin = new System.Windows.Forms.ComboBox();
+            this.btnCountStart = new System.Windows.Forms.Button();
+            this.btnCountPause = new System.Windows.Forms.Button();
+            this.btnCountStop = new System.Windows.Forms.Button();
+            this.timerCountDown = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -172,6 +190,13 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.listStopWatchLog);
+            this.tabPage2.Controls.Add(this.btnLog);
+            this.tabPage2.Controls.Add(this.btnStop);
+            this.tabPage2.Controls.Add(this.btnPause);
+            this.tabPage2.Controls.Add(this.btnStart);
+            this.tabPage2.Controls.Add(this.btnReset);
+            this.tabPage2.Controls.Add(this.txtStopWatch);
             this.tabPage2.Location = new System.Drawing.Point(4, 33);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
@@ -183,6 +208,13 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btnCountStop);
+            this.tabPage3.Controls.Add(this.btnCountPause);
+            this.tabPage3.Controls.Add(this.btnCountStart);
+            this.tabPage3.Controls.Add(this.cmbCountMin);
+            this.tabPage3.Controls.Add(this.cmbCountSecond);
+            this.tabPage3.Controls.Add(this.cmbCountHour);
+            this.tabPage3.Controls.Add(this.txtCountDown);
             this.tabPage3.Location = new System.Drawing.Point(4, 33);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
@@ -199,6 +231,178 @@
             // 
             this.timerAlert.Tick += new System.EventHandler(this.timerAlert_Tick);
             // 
+            // timerStopWatch
+            // 
+            this.timerStopWatch.Interval = 1;
+            this.timerStopWatch.Tick += new System.EventHandler(this.timerStopWatch_Tick);
+            // 
+            // txtStopWatch
+            // 
+            this.txtStopWatch.Enabled = false;
+            this.txtStopWatch.Font = new System.Drawing.Font("新細明體", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtStopWatch.Location = new System.Drawing.Point(8, 19);
+            this.txtStopWatch.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStopWatch.Name = "txtStopWatch";
+            this.txtStopWatch.Size = new System.Drawing.Size(903, 123);
+            this.txtStopWatch.TabIndex = 1;
+            this.txtStopWatch.Text = "00:00:00:000";
+            this.txtStopWatch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnReset
+            // 
+            this.btnReset.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnReset.Location = new System.Drawing.Point(307, 251);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(224, 72);
+            this.btnReset.TabIndex = 7;
+            this.btnReset.Text = "歸零";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // btnStart
+            // 
+            this.btnStart.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnStart.Location = new System.Drawing.Point(307, 171);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(4);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(224, 72);
+            this.btnStart.TabIndex = 8;
+            this.btnStart.Text = "開始";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // btnPause
+            // 
+            this.btnPause.BackColor = System.Drawing.Color.LemonChiffon;
+            this.btnPause.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnPause.Location = new System.Drawing.Point(560, 171);
+            this.btnPause.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPause.Name = "btnPause";
+            this.btnPause.Size = new System.Drawing.Size(224, 72);
+            this.btnPause.TabIndex = 9;
+            this.btnPause.Text = "暫停";
+            this.btnPause.UseVisualStyleBackColor = false;
+            this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
+            // 
+            // btnStop
+            // 
+            this.btnStop.BackColor = System.Drawing.Color.MistyRose;
+            this.btnStop.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnStop.Location = new System.Drawing.Point(319, 355);
+            this.btnStop.Margin = new System.Windows.Forms.Padding(4);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(465, 72);
+            this.btnStop.TabIndex = 10;
+            this.btnStop.Text = "停止並歸零";
+            this.btnStop.UseVisualStyleBackColor = false;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // btnLog
+            // 
+            this.btnLog.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnLog.Location = new System.Drawing.Point(560, 251);
+            this.btnLog.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLog.Name = "btnLog";
+            this.btnLog.Size = new System.Drawing.Size(224, 72);
+            this.btnLog.TabIndex = 11;
+            this.btnLog.Text = "紀錄";
+            this.btnLog.UseVisualStyleBackColor = true;
+            this.btnLog.Click += new System.EventHandler(this.btnLog_Click);
+            // 
+            // listStopWatchLog
+            // 
+            this.listStopWatchLog.FormattingEnabled = true;
+            this.listStopWatchLog.ItemHeight = 24;
+            this.listStopWatchLog.Location = new System.Drawing.Point(20, 171);
+            this.listStopWatchLog.Name = "listStopWatchLog";
+            this.listStopWatchLog.Size = new System.Drawing.Size(267, 268);
+            this.listStopWatchLog.TabIndex = 12;
+            // 
+            // txtCountDown
+            // 
+            this.txtCountDown.Enabled = false;
+            this.txtCountDown.Font = new System.Drawing.Font("新細明體", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtCountDown.Location = new System.Drawing.Point(9, 4);
+            this.txtCountDown.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCountDown.Name = "txtCountDown";
+            this.txtCountDown.Size = new System.Drawing.Size(903, 123);
+            this.txtCountDown.TabIndex = 1;
+            this.txtCountDown.Text = "00:00:00";
+            this.txtCountDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // cmbCountHour
+            // 
+            this.cmbCountHour.Font = new System.Drawing.Font("新細明體", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.cmbCountHour.FormattingEnabled = true;
+            this.cmbCountHour.Location = new System.Drawing.Point(23, 153);
+            this.cmbCountHour.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbCountHour.Name = "cmbCountHour";
+            this.cmbCountHour.Size = new System.Drawing.Size(151, 43);
+            this.cmbCountHour.TabIndex = 4;
+            // 
+            // cmbCountSecond
+            // 
+            this.cmbCountSecond.Font = new System.Drawing.Font("新細明體", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.cmbCountSecond.FormattingEnabled = true;
+            this.cmbCountSecond.Location = new System.Drawing.Point(341, 153);
+            this.cmbCountSecond.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbCountSecond.Name = "cmbCountSecond";
+            this.cmbCountSecond.Size = new System.Drawing.Size(151, 43);
+            this.cmbCountSecond.TabIndex = 5;
+            // 
+            // cmbCountMin
+            // 
+            this.cmbCountMin.Font = new System.Drawing.Font("新細明體", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.cmbCountMin.FormattingEnabled = true;
+            this.cmbCountMin.Location = new System.Drawing.Point(182, 153);
+            this.cmbCountMin.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbCountMin.Name = "cmbCountMin";
+            this.cmbCountMin.Size = new System.Drawing.Size(151, 43);
+            this.cmbCountMin.TabIndex = 6;
+            // 
+            // btnCountStart
+            // 
+            this.btnCountStart.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnCountStart.Location = new System.Drawing.Point(23, 216);
+            this.btnCountStart.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCountStart.Name = "btnCountStart";
+            this.btnCountStart.Size = new System.Drawing.Size(469, 65);
+            this.btnCountStart.TabIndex = 7;
+            this.btnCountStart.Text = "開始倒數";
+            this.btnCountStart.UseVisualStyleBackColor = true;
+            this.btnCountStart.Click += new System.EventHandler(this.btnCountStart_Click);
+            // 
+            // btnCountPause
+            // 
+            this.btnCountPause.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnCountPause.Location = new System.Drawing.Point(23, 301);
+            this.btnCountPause.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCountPause.Name = "btnCountPause";
+            this.btnCountPause.Size = new System.Drawing.Size(469, 59);
+            this.btnCountPause.TabIndex = 8;
+            this.btnCountPause.Text = "暫停";
+            this.btnCountPause.UseVisualStyleBackColor = true;
+            this.btnCountPause.Click += new System.EventHandler(this.btnCountPause_Click);
+            // 
+            // btnCountStop
+            // 
+            this.btnCountStop.BackColor = System.Drawing.Color.MistyRose;
+            this.btnCountStop.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnCountStop.Location = new System.Drawing.Point(23, 379);
+            this.btnCountStop.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCountStop.Name = "btnCountStop";
+            this.btnCountStop.Size = new System.Drawing.Size(469, 64);
+            this.btnCountStop.TabIndex = 9;
+            this.btnCountStop.Text = "停止";
+            this.btnCountStop.UseVisualStyleBackColor = false;
+            this.btnCountStop.Click += new System.EventHandler(this.btnCountStop_Click);
+            // 
+            // timerCountDown
+            // 
+            this.timerCountDown.Interval = 1;
+            this.timerCountDown.Tick += new System.EventHandler(this.timerCountDown_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -213,6 +417,10 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -233,6 +441,22 @@
         private System.Windows.Forms.ComboBox cmbHour;
         private System.Windows.Forms.Timer timerClcok;
         private System.Windows.Forms.Timer timerAlert;
+        private System.Windows.Forms.TextBox txtStopWatch;
+        private System.Windows.Forms.Timer timerStopWatch;
+        private System.Windows.Forms.Button btnLog;
+        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Button btnPause;
+        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.ListBox listStopWatchLog;
+        private System.Windows.Forms.Button btnCountStop;
+        private System.Windows.Forms.Button btnCountPause;
+        private System.Windows.Forms.Button btnCountStart;
+        private System.Windows.Forms.ComboBox cmbCountMin;
+        private System.Windows.Forms.ComboBox cmbCountSecond;
+        private System.Windows.Forms.ComboBox cmbCountHour;
+        private System.Windows.Forms.TextBox txtCountDown;
+        private System.Windows.Forms.Timer timerCountDown;
     }
 }
 
